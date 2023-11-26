@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MySymbolsService } from '../my-symbols.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-symbols',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './stock-symbols.component.html',
   styleUrl: './stock-symbols.component.css',
 })

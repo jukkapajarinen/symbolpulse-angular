@@ -64,35 +64,55 @@
   </tbody>
 </table>
 
-<!-- Pagination -->
-<div *ngIf="pageCount > 1" class="mt-4">
-  <button
-    (click)="goToPage(1)"
-    [disabled]="currentPage === 1"
-    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
-  >
-    First
-  </button>
-  <button
-    (click)="goToPage(currentPage - 1)"
-    [disabled]="currentPage === 1"
-    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
-  >
-    Previous
-  </button>
-  <span class="mr-2">Page {{ currentPage }} of {{ pageCount }}</span>
-  <button
-    (click)="goToPage(currentPage + 1)"
-    [disabled]="currentPage === pageCount"
-    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
-  >
-    Next
-  </button>
-  <button
-    (click)="goToPage(pageCount)"
-    [disabled]="currentPage === pageCount"
-    class="px-2 py-1 bg-blue-500 text-white rounded"
-  >
-    Last
-  </button>
+<div class="flex justify-between">
+  <div class="flex flex-row items-center mt-4">
+    <label for="filterSymbols">Search: </label>
+    <input
+      type="text"
+      id="filterSymbols"
+      disabled
+      class="ml-2 px-2 border rounded w-full"
+    />
+  </div>
+
+  <!-- Pagination -->
+  <div *ngIf="pageCount > 1" class="mt-4">
+    <button
+      (click)="goToPage(1)"
+      [disabled]="currentPage === 1"
+      class="px-2 py-1 mr-2 {{
+        currentPage === 1 ? 'bg-blue-400' : 'bg-blue-500'
+      }} text-white rounded"
+    >
+      First
+    </button>
+    <button
+      (click)="goToPage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="px-2 py-1 mr-2 {{
+        currentPage === 1 ? 'bg-blue-400' : 'bg-blue-500'
+      }} text-white rounded"
+    >
+      Previous
+    </button>
+    <span class="mr-2">Page {{ currentPage }} of {{ pageCount }}</span>
+    <button
+      (click)="goToPage(currentPage + 1)"
+      [disabled]="currentPage === pageCount"
+      class="px-2 py-1 mr-2 {{
+        currentPage === pageCount ? 'bg-blue-400' : 'bg-blue-500'
+      }} text-white rounded"
+    >
+      Next
+    </button>
+    <button
+      (click)="goToPage(pageCount)"
+      [disabled]="currentPage === pageCount"
+      class="px-2 py-1 {{
+        currentPage === pageCount ? 'bg-blue-400' : 'bg-blue-500'
+      }} text-white rounded"
+    >
+      Last
+    </button>
+  </div>
 </div>
