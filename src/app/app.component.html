@@ -1,3 +1,44 @@
 <h1 class="text-3xl font-bold underline">{{ title }}</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Currency</th>
+      <th>Exchange</th>
+      <th>MIC Code</th>
+      <th>Country</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let symbol of displayedSymbols">
+      <td>{{ symbol.symbol }}</td>
+      <td>{{ symbol.name }}</td>
+      <td>{{ symbol.currency }}</td>
+      <td>{{ symbol.exchange }}</td>
+      <td>{{ symbol.mic_code }}</td>
+      <td>{{ symbol.country }}</td>
+      <td>{{ symbol.type }}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="pageCount > 1">
+  <button (click)="goToPage(1)" [disabled]="currentPage === 1">First</button>
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+    Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ pageCount }}</span>
+  <button
+    (click)="goToPage(currentPage + 1)"
+    [disabled]="currentPage === pageCount"
+  >
+    Next
+  </button>
+  <button (click)="goToPage(pageCount)" [disabled]="currentPage === pageCount">
+    Last
+  </button>
+</div>
+
 <router-outlet></router-outlet>
