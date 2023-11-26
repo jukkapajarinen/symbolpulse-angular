@@ -29,18 +29,19 @@ export class DashboardComponent implements OnInit {
         )
         .subscribe(
           (response: any) => {
-            this.fetched[symbol.symbol] = response;
-            console.log(this.fetched);
-            this.renderChart(
-              symbol,
-              response.values.map((item: any) => [
-                new Date(item.datetime),
-                parseFloat(item.open),
-                parseFloat(item.high),
-                parseFloat(item.low),
-                parseFloat(item.close),
-              ])
-            );
+            if (response.status === 'ok') {
+              this.fetched[symbol.symbol] = response;
+              this.renderChart(
+                symbol,
+                response.values.map((item: any) => [
+                  new Date(item.datetime),
+                  parseFloat(item.open),
+                  parseFloat(item.high),
+                  parseFloat(item.low),
+                  parseFloat(item.close),
+                ])
+              );
+            }
           },
           (error) => {
             console.log(

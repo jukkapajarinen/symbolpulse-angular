@@ -8,7 +8,7 @@
       <div class="flex justify-between">
         <h1 class="text-left">{{ selectedSymbol.symbol }}</h1>
         <div class="text-right">
-          {{ fetched[selectedSymbol.symbol]?.values[0]?.close }}
+          {{ fetched[selectedSymbol.symbol]?.values?.[0]?.close }}
         </div>
       </div>
       <div
