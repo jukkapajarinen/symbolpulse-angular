@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TwelveDataService } from './twelve-data.service';
+import { MySymbolsService } from './my-symbols.service';
 
-describe('TwelveDataService', () => {
-  let service: TwelveDataService;
+describe('MySymbolsService', () => {
+  let service: MySymbolsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TwelveDataService);
+    service = TestBed.inject(MySymbolsService);
   });
 
   it('should be created', () => {
