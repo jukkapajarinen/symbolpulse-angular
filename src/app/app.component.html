@@ -12,9 +12,29 @@
       <p class="mb-2 text-gray-500">My selected symbols:</p>
       <div
         *ngFor="let selectedSymbol of selectedSymbols"
-        class="bg-blue-500 text-white p-1 mb-1 inline-block mr-1"
+        class="bg-blue-500 text-white rounded px-2 py-1 mb-2 mr-2 inline-flex items-center"
       >
         {{ selectedSymbol.symbol }}
+        <button
+          class="ml-2 text-blue-400"
+          (click)="removeSelectedSymbol(selectedSymbol)"
+        >
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
     </div>
 
@@ -23,7 +43,7 @@
 
   <!-- Main Content -->
   <main class="flex-1 p-4 overflow-hidden">
-    <h2 class="text-2xl font-bold mb-4">Symbol Data</h2>
+    <h2 class="text-2xl font-bold mb-4">Available Symbols</h2>
 
     <!-- Loading spinner -->
     <div
@@ -94,14 +114,14 @@
       <button
         (click)="goToPage(1)"
         [disabled]="currentPage === 1"
-        class="px-2 py-1 mr-2 bg-blue-500 text-white"
+        class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
       >
         First
       </button>
       <button
         (click)="goToPage(currentPage - 1)"
         [disabled]="currentPage === 1"
-        class="px-2 py-1 mr-2 bg-blue-500 text-white"
+        class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
       >
         Previous
       </button>
@@ -109,14 +129,14 @@
       <button
         (click)="goToPage(currentPage + 1)"
         [disabled]="currentPage === pageCount"
-        class="px-2 py-1 mr-2 bg-blue-500 text-white"
+        class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
       >
         Next
       </button>
       <button
         (click)="goToPage(pageCount)"
         [disabled]="currentPage === pageCount"
-        class="px-2 py-1 bg-blue-500 text-white"
+        class="px-2 py-1 bg-blue-500 text-white rounded"
       >
         Last
       </button>
