@@ -1,8 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 
 import * as JSC from 'jscharting';
+import { MySymbolsService } from '../my-symbols.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,44 +12,48 @@ import * as JSC from 'jscharting';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements AfterViewInit {
-  loading = true;
-  error: string | null = null;
-  chartData!: any[];
-  chartContainer: any;
-  symbol: string = 'AAPL';
+export class DashboardComponent implements OnInit {
+  fetched: any = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    protected MySymbolsService: MySymbolsService
+  ) {}
 
-  ngAfterViewInit() {
-    // Construct the API URL
-    const apiUrl = `https://api.twelvedata.com/time_series?symbol=${this.symbol}&interval=1day&apikey=demo`;
-
-    // Make the API request using HttpClient
-    this.httpClient.get(apiUrl).subscribe(
-      (response: any) => {
-        this.chartData = response.values.map((item: any) => [
-          new Date(item.datetime),
-          parseFloat(item.open),
-          parseFloat(item.high),
-          parseFloat(item.low),
-          parseFloat(item.close),
-        ]);
-        this.renderChart();
-        this.loading = false;
-      },
-      (error) => {
-        this.error = error.message || 'An error occurred while fetching data.';
-        this.loading = false;
-      }
-    );
+  ngOnInit() {
+    this.MySymbolsService.loadSelectedSymbols();
+    this.MySymbolsService.selectedSymbols.map((symbol) => {
+      this.httpClient
+        .get(
+          `https://api.twelvedata.com/time_series?symbol=${symbol.symbol}&interval=5min&apikey=demo`
+        )
+        .subscribe(
+          (response: any) => {
+            this.fetched[symbol.symbol] = response;
+            console.log(this.fetched);
+            this.renderChart(
+              symbol,
+              response.values.map((item: any) => [
+                new Date(item.datetime),
+                parseFloat(item.open),
+                parseFloat(item.high),
+                parseFloat(item.low),
+                parseFloat(item.close),
+              ])
+            );
+          },
+          (error) => {
+            console.log(
+              error.message || 'An error occurred while fetching data.'
+            );
+          }
+        );
+    });
   }
 
-  renderChart() {
-    console.log(this.chartData);
-
+  renderChart(symbol: any, chartData: any[]) {
     // Initialize JSCharting candlestick chart
-    new JSC.Chart('chartContainer', {
+    new JSC.Chart(`chartContainer_${symbol.symbol}`, {
       type: 'candlestick',
       legend: {
         template: '%icon %name',
@@ -61,8 +66,8 @@ export class DashboardComponent implements AfterViewInit {
       xAxis_scale_type: 'time',
       series: [
         {
-          name: this.symbol,
-          points: this.chartData,
+          name: symbol.symbol,
+          points: chartData,
         },
       ],
     });
