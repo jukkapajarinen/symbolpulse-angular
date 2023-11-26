@@ -1,9 +1,17 @@
 <aside class="h-screen w-64 bg-gray-800 text-white">
   <div class="bg-blue-500 text-white p-4">
-    <h1 class="text-2xl font-bold mb-0">{{ appTitle }}</h1>
+    <a href="/" class="text-2xl font-bold mb-0">{{ appTitle }}</a>
   </div>
 
-  <div class="p-4"></div>
+  <div class="p-4">
+    <ul>
+      <li><a href="/stocks">Stock Symbols</a></li>
+      <li><a href="/forex-pairs">Forex Symbols</a></li>
+      <li><a href="/cryptocurrencies">Crypto Symbols</a></li>
+      <li><a href="/etfs">ETF Symbols</a></li>
+      <li><a href="/indices">Indices Symbols</a></li>
+    </ul>
+  </div>
 
   <!-- Display selected symbols as badges in the sidebar -->
   <div class="p-4">
@@ -15,7 +23,7 @@
       {{ selectedSymbol.symbol }}
       <button
         class="ml-2 text-blue-400"
-        (click)="removeSelectedSymbol(selectedSymbol)"
+        (click)="MySymbolsService.removeSelectedSymbol(selectedSymbol)"
       >
         <svg
           class="h-6 w-6"

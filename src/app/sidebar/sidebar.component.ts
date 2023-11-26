@@ -18,6 +18,4 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.MySymbolsService.loadSelectedSymbols();
   }
-
-  removeSelectedSymbol(symbol: any): void {}
 }

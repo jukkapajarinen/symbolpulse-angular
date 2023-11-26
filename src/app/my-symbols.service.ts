@@ -30,5 +30,7 @@ export class MySymbolsService {
     if (index !== -1) {
       this.selectedSymbols.splice(index, 1);
     }
+
+    this.saveSelectedSymbols();
   }
 }

@@ -1,0 +1,96 @@
+<h2 class="text-2xl font-bold mb-4">Available Indices Symbols</h2>
+
+<!-- Loading spinner -->
+<div
+  *ngIf="symbols.length === 0"
+  class="flex items-center justify-center h-full"
+>
+  <svg
+    class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-500"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <circle
+      class="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      stroke-width="4"
+    ></circle>
+    <path
+      class="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+  Processing...
+</div>
+
+<!-- Your table goes here -->
+<table class="w-full" *ngIf="symbols.length > 0">
+  <!-- Table headers -->
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Currency</th>
+      <th>Exchange</th>
+      <th>MIC Code</th>
+    </tr>
+  </thead>
+  <!-- Table body -->
+  <tbody>
+    <tr *ngFor="let symbol of displayedSymbols">
+      <td>
+        <input
+          type="checkbox"
+          [checked]="isSymbolSelected(symbol)"
+          (change)="toggleSelect(symbol)"
+        />
+      </td>
+      <td>{{ symbol.symbol }}</td>
+      <td>{{ symbol.name }}</td>
+      <td>{{ symbol.country }}</td>
+      <td>{{ symbol.currency }}</td>
+      <td>{{ symbol.exchange }}</td>
+      <td>{{ symbol.mic_code }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div *ngIf="pageCount > 1" class="mt-4">
+  <button
+    (click)="goToPage(1)"
+    [disabled]="currentPage === 1"
+    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
+  >
+    First
+  </button>
+  <button
+    (click)="goToPage(currentPage - 1)"
+    [disabled]="currentPage === 1"
+    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
+  >
+    Previous
+  </button>
+  <span class="mr-2">Page {{ currentPage }} of {{ pageCount }}</span>
+  <button
+    (click)="goToPage(currentPage + 1)"
+    [disabled]="currentPage === pageCount"
+    class="px-2 py-1 mr-2 bg-blue-500 text-white rounded"
+  >
+    Next
+  </button>
+  <button
+    (click)="goToPage(pageCount)"
+    [disabled]="currentPage === pageCount"
+    class="px-2 py-1 bg-blue-500 text-white rounded"
+  >
+    Last
+  </button>
+</div>
