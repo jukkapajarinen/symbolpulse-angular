@@ -9,8 +9,8 @@ import { StockSymbolsComponent } from './stock-symbols/stock-symbols.component';
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'stocks', component: StockSymbolsComponent },
-  { path: 'forex-pairs', component: ForexSymbolsComponent },
-  { path: 'cryptocurrencies', component: CryptoSymbolsComponent },
+  { path: 'forex', component: ForexSymbolsComponent },
+  { path: 'crypto', component: CryptoSymbolsComponent },
   { path: 'etfs', component: ETFSymbolsComponent },
   { path: 'indices', component: IndicesSymbolsComponent },
   { path: '**', redirectTo: '/stocks', pathMatch: 'full' },
