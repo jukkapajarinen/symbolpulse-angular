@@ -1,6 +1,8 @@
-# Symbolpulse - Angular, TailwindCSS and JSCharting app using TwelveData API.
+# Symbolpulse - Angular, TailwindCSS, JSCharting, TwelveData API
 
-My Angular app built with TailwindCSS and JSCharting, using TwelveData API.
+![screenshot](scrot.png?raw=true)
+
+Track candlestick charts and financial data for symbols. Angular app built with TailwindCSS and JSCharting, using TwelveData API.
 
 ## How to run?
 
