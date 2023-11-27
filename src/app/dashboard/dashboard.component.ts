@@ -12,6 +12,7 @@ import { MySymbolsService } from '../my-symbols.service';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
+  pageTitle: string = 'My Selected Symbols';
   fetched: any = [];
 
   constructor(

@@ -9,5 +9,5 @@ export const routes: Routes = [
   { path: 'cryptocurrencies', component: SymbolsComponent },
   { path: 'etf', component: SymbolsComponent },
   { path: 'indices', component: SymbolsComponent },
-  { path: '**', redirectTo: '/stocks', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
