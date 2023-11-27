@@ -9,6 +9,5 @@ import { SymbolsComponent } from './symbols/symbols.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, SidebarComponent, SymbolsComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {}

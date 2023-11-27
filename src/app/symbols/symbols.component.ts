@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './symbols.component.html',
-  styleUrl: './symbols.component.css',
 })
 export class SymbolsComponent implements OnInit {
   pageTitle: string = '';

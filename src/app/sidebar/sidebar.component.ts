@@ -7,7 +7,6 @@ import { MySymbolsService } from '../my-symbols.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent implements OnInit {
   appTitle: string = 'Symbolpulse';

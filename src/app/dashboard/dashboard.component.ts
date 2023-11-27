@@ -10,7 +10,6 @@ import { MySymbolsService } from '../my-symbols.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   fetched: any = [];
