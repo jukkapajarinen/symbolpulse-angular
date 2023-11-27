@@ -1,8 +1,7 @@
-<h2 class="text-2xl font-bold mb-4">Available Stock Symbols</h2>
+<h2 class="text-2xl font-bold mb-4">{{ pageTitle }}</h2>
 
-<!-- Loading spinner -->
 <div
-  *ngIf="symbols.length === 0"
+  *ngIf="allSymbols.length === 0"
   class="flex items-center justify-center h-full"
 >
   <svg
@@ -28,22 +27,13 @@
   Processing...
 </div>
 
-<!-- Your table goes here -->
-<table class="w-full" *ngIf="symbols.length > 0">
-  <!-- Table headers -->
+<table class="w-full" *ngIf="allSymbols.length > 0">
   <thead>
     <tr>
       <th>Select</th>
-      <th>Symbol</th>
-      <th>Name</th>
-      <th>Currency</th>
-      <th>Exchange</th>
-      <th>MIC Code</th>
-      <th>Country</th>
-      <th>Type</th>
+      <th *ngFor="let heading of headings">{{ heading | titlecase }}</th>
     </tr>
   </thead>
-  <!-- Table body -->
   <tbody>
     <tr *ngFor="let symbol of displayedSymbols">
       <td>
@@ -53,13 +43,9 @@
           (change)="toggleSelect(symbol)"
         />
       </td>
-      <td>{{ symbol.symbol }}</td>
-      <td>{{ symbol.name }}</td>
-      <td>{{ symbol.currency }}</td>
-      <td>{{ symbol.exchange }}</td>
-      <td>{{ symbol.mic_code }}</td>
-      <td>{{ symbol.country }}</td>
-      <td>{{ symbol.type }}</td>
+      <td *ngFor="let heading of headings">
+        {{ symbol[heading.toLowerCase()] }}
+      </td>
     </tr>
   </tbody>
 </table>
@@ -75,7 +61,6 @@
     />
   </div>
 
-  <!-- Pagination -->
   <div *ngIf="pageCount > 1" class="mt-4">
     <button
       (click)="goToPage(1)"

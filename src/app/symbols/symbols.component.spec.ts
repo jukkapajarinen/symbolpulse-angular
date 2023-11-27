@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SymbolsComponent } from './symbols.component';
 
-import { CryptoSymbolsComponent } from './crypto-symbols.component';
-
-describe('CryptoSymbolsComponent', () => {
-  let component: CryptoSymbolsComponent;
-  let fixture: ComponentFixture<CryptoSymbolsComponent>;
+describe('SymbolsComponent', () => {
+  let component: SymbolsComponent;
+  let fixture: ComponentFixture<SymbolsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CryptoSymbolsComponent],
+      imports: [SymbolsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CryptoSymbolsComponent);
+    fixture = TestBed.createComponent(SymbolsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

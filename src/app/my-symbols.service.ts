@@ -25,7 +25,6 @@ export class MySymbolsService {
   }
 
   removeSelectedSymbol(selectedSymbol: any) {
-    // Remove the selected symbol from the array
     const index = this.selectedSymbols.indexOf(selectedSymbol);
     if (index !== -1) {
       this.selectedSymbols.splice(index, 1);

@@ -10,7 +10,7 @@ import { MySymbolsService } from '../my-symbols.service';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent implements OnInit {
-  appTitle: string = 'SymbolPulse'; // Set the app title here
+  appTitle: string = 'Symbolpulse';
   selectedSymbols: any[] = [];
 
   constructor(protected MySymbolsService: MySymbolsService) {}
