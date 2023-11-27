@@ -140,6 +140,12 @@
 
     <div class="pt-4 p-2 space-y-1 text-sm">
       <p class="mb-2 text-violet-300">My selected symbols:</p>
+      <p
+        *ngIf="MySymbolsService.selectedSymbols.length < 1"
+        class="italic text-xs"
+      >
+        No symbols.
+      </p>
       <div
         *ngFor="let selectedSymbol of MySymbolsService.selectedSymbols"
         class="bg-violet-500 text-white rounded px-2 py-1 mb-1 mr-1 inline-flex"
