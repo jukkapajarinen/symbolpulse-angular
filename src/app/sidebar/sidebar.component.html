@@ -1,13 +1,13 @@
 <aside class="h-full space-y-2 w-60 bg-violet-600">
   <div class="bg-violet-900 px-6 py-3">
-    <a class="text-xl font-bold text-white" href="/">{{ appTitle }}</a>
+    <a class="text-xl font-bold text-white" routerLink="/">{{ appTitle }}</a>
   </div>
   <div class="divide-y divide-violet-500 px-3 font-semibold text-violet-100">
     <ul class="pt-2 pb-4 space-y-1 text-sm">
       <li>
         <a
           rel="noopener noreferrer"
-          href="/"
+          routerLink="/"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -25,7 +25,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/settings"
+          routerLink="/settings"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -49,7 +49,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/stocks"
+          [routerLink]="['/stocks']"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -67,7 +67,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/forex_pairs"
+          routerLink="/forex_pairs"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -85,7 +85,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/cryptocurrencies"
+          routerLink="/cryptocurrencies"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -103,7 +103,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/etf"
+          routerLink="/etf"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
@@ -121,7 +121,7 @@
       <li>
         <a
           rel="noopener noreferrer"
-          href="/indices"
+          routerLink="/indices"
           class="flex items-center p-2 space-x-3 rounded-md"
         >
           <svg
