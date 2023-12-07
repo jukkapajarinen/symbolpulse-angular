@@ -16,5 +16,24 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.MySymbolsService.loadSelectedSymbols();
+
+    // Pre-select AAPL symbol
+    const aapl = {
+      symbol: 'AAPL',
+      name: 'Apple Inc',
+      currency: 'USD',
+      exchange: 'NASDAQ',
+      mic_code: 'XNGS',
+      country: 'United States',
+      type: 'Common Stock',
+    };
+    if (
+      !this.MySymbolsService.selectedSymbols.some(
+        (s) => JSON.stringify(s) === JSON.stringify(aapl)
+      )
+    ) {
+      this.MySymbolsService.selectedSymbols.push(aapl);
+      this.MySymbolsService.saveSelectedSymbols();
+    }
   }
 }
